@@ -35,10 +35,7 @@ const Home = () => {
         </h1>
         <div className="flex items-center justify-between px-1">
           <p className="italic text-gray-600 ">{user.name}</p>
-          <button
-            onClick={handleLogout}
-            className="px-3 py-1 text-sm font-bold text-red-600 transition border border-red-600 rounded-xl hover:cursor-pointer hover:bg-red-300"
-          >
+          <button onClick={handleLogout} className="text-sm btn btn-red">
             Logout
           </button>
         </div>

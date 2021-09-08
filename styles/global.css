@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.input-form {
+  @apply px-2 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-300;
+}
+
+.btn {
+  @apply px-4 py-1 mt-4 font-semibold transition rounded-lg hover:cursor-pointer;
+}
+
+.btn-green {
+  @apply text-white bg-green-600 hover:bg-green-500;
+}
+
+.btn-red {
+  @apply text-white bg-red-600 hover:bg-red-400;
+}

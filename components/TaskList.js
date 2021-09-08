@@ -8,10 +8,8 @@ const TaskList = ({
   onChangeStatus,
   onActionButton,
 }) => {
-  const classActionName =
-    actionType === "danger"
-      ? "text-red-600 border-red-600 hover:bg-red-300"
-      : "text-green-600 border-green-600 hover:bg-green-300";
+  const classActionName = actionType === "danger" ? "btn-red" : "btn-green";
+
   return (
     <div className="flex flex-col">
       <div className="flex items-center justify-between mx-5">
@@ -31,10 +29,7 @@ const TaskList = ({
       </ul>
       <button
         onClick={onActionButton}
-        className={
-          "font-bold self-end px-2 mt-2 transition border rounded-xl hover:cursor-pointer " +
-          classActionName
-        }
+        className={`self-end btn ${classActionName}`}
       >
         {actionTitle}
       </button>

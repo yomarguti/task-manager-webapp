@@ -19,7 +19,7 @@ const SignIn = ({ onSubmit, onSwitchSign }) => {
           <label htmlFor="InputEmail1">Email address</label>
           <input
             ref={emailRef}
-            className="px-2 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-300"
+            className="input-form"
             type="email"
             id="InputEmail1"
             placeholder="Enter email"
@@ -32,15 +32,13 @@ const SignIn = ({ onSubmit, onSwitchSign }) => {
           <label htmlFor="InputPassword1">Password</label>
           <input
             ref={passwordRef}
-            className="px-2 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-300"
+            className="input-form"
             type="password"
             id="InputPassword1"
             placeholder="Password"
           />
         </div>
-        <button className="px-4 py-1 mt-8 font-bold text-white bg-green-600 rounded-lg hover:cursor-pointer">
-          Sign in
-        </button>
+        <button className="btn btn-green">Sign in</button>
         <small className="self-center mt-4 text-gray-500">
           Don't you have an account?{" "}
           <span

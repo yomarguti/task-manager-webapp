@@ -24,14 +24,12 @@ const NewTask = ({ addTask }) => {
       <form className="flex flex-col pt-2" onSubmit={handleSubmit}>
         <input
           ref={descriptionRef}
-          className="px-2 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-300"
+          className="input-form"
           type="text"
           id="InputDescription"
           placeholder="Describe your Task"
         />
-        <button className="self-end px-4 py-1 mt-3 font-bold text-white bg-green-600 rounded-lg hover:cursor-pointer">
-          Create
-        </button>
+        <button className="self-end btn btn-green">Create</button>
       </form>
     </div>
   );

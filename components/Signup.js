@@ -23,7 +23,7 @@ const SignUp = ({ onSubmit, onSwitchSign }) => {
           <label htmlFor="InputFullName">Full Name</label>
           <input
             ref={fullNameRef}
-            className="px-2 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-300"
+            className="input-form"
             type="text"
             id="InputFullName"
             placeholder="Enter full name"
@@ -33,7 +33,7 @@ const SignUp = ({ onSubmit, onSwitchSign }) => {
           <label htmlFor="InputAge">Age</label>
           <input
             ref={ageRef}
-            className="px-2 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-300"
+            className="input-form"
             type="number"
             id="InputAge"
             placeholder="Enter age"
@@ -43,7 +43,7 @@ const SignUp = ({ onSubmit, onSwitchSign }) => {
           <label htmlFor="InputEmail1">Email address</label>
           <input
             ref={emailRef}
-            className="px-2 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-300"
+            className="input-form"
             type="email"
             id="InputEmail1"
             placeholder="Enter email"
@@ -56,15 +56,13 @@ const SignUp = ({ onSubmit, onSwitchSign }) => {
           <label htmlFor="InputPassword1">Password</label>
           <input
             ref={passwordRef}
-            className="px-2 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-300"
+            className="input-form"
             type="password"
             id="InputPassword1"
             placeholder="Password"
           />
         </div>
-        <button className="px-4 py-1 mt-8 font-bold text-white bg-green-600 rounded-lg hover:cursor-pointer">
-          Sign Up
-        </button>
+        <button className="btn btn-green">Sign Up</button>
         <small className="self-center mt-4 text-gray-500">
           Do you have an account?{" "}
           <span
