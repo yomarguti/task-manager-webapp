@@ -16,7 +16,7 @@ const TaskList = ({
         <h4 className="text-lg font-semibold">{title}</h4>
         <span className="text-sm italic text-gray-600">{`${tasks.length} tasks`}</span>
       </div>
-      <ul className="min-h-[12rem] px-3 py-3 mt-3 overflow-y-auto bg-gray-100 border border-gray-300 rounded-lg shadow-inner max-h-96">
+      <ul className="min-h-[8rem] sm:min-h-[12rem] px-3 py-3 mt-3 overflow-y-auto bg-gray-100 border border-gray-300 rounded-lg shadow-inner max-h-96">
         {tasks.map((tsk) => {
           return (
             <TaskItem

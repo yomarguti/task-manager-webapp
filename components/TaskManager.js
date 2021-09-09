@@ -87,9 +87,9 @@ const TaskManager = () => {
   };
 
   return (
-    <main className="container px-4 pt-10 mx-auto">
+    <main className="container px-4 pt-10 pb-5 mx-auto">
       <NewTask addTask={handleNewTasks} />
-      <div className="grid grid-cols-2 gap-x-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 sm:gap-x-3">
         <TaskList
           title="Active Tasks"
           actionTitle="Complete All"
