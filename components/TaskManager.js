@@ -61,7 +61,7 @@ const TaskManager = () => {
     setActiveTasks([task, ...activeTasks]);
   };
 
-  const handleDeleteCompleted = async () => {
+  const handleDeleteAllCompleted = async () => {
     const ids = completedTasks.map((tsk) => tsk._id);
     if (ids.length == 0) return;
 
@@ -73,7 +73,7 @@ const TaskManager = () => {
     }
   };
 
-  const handleCompleted = async () => {
+  const handleCompleteAll = async () => {
     const ids = activeTasks.map((tsk) => tsk._id);
     if (ids.length == 0) return;
 
@@ -95,7 +95,7 @@ const TaskManager = () => {
           actionTitle="Complete All"
           tasks={activeTasks}
           onChangeStatus={handleSwitchCompletionStatus}
-          onActionButton={handleCompleted}
+          onActionButton={handleCompleteAll}
         />
         <TaskList
           title="Completed Tasks"
@@ -103,7 +103,7 @@ const TaskManager = () => {
           actionType="danger"
           tasks={completedTasks}
           onChangeStatus={handleSwitchCompletionStatus}
-          onActionButton={handleDeleteCompleted}
+          onActionButton={handleDeleteAllCompleted}
         />
       </div>
     </main>
