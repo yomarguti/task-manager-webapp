@@ -3,12 +3,15 @@ import { useRouter } from "next/router";
 
 import TaskList from "./TaskList";
 import NewTask from "./NewTask";
+import Modal from "./Modal";
+import ActionButtons from "./ActionButtons";
 
 import taskAPI from "../utils/TaskAPI";
 
 const TaskManager = () => {
   const [activeTasks, setActiveTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
+  const [showModal, setShowModal] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -68,6 +71,7 @@ const TaskManager = () => {
     try {
       await taskAPI.delete("/tasks", { data: { ids } });
       setCompletedTasks([]);
+      setShowModal(false);
     } catch (error) {
       console.log(error);
     }
@@ -88,6 +92,16 @@ const TaskManager = () => {
 
   return (
     <main className="container px-4 pt-10 pb-5 mx-auto">
+      <Modal
+        onClose={() => setShowModal(false)}
+        show={showModal}
+        title="Are you sure you want to delete?"
+      >
+        <ActionButtons
+          onCancel={() => setShowModal(false)}
+          onConfirm={handleDeleteAllCompleted}
+        />
+      </Modal>
       <NewTask addTask={handleNewTasks} />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 sm:gap-x-3">
         <TaskList
@@ -103,7 +117,7 @@ const TaskManager = () => {
           actionType="danger"
           tasks={completedTasks}
           onChangeStatus={handleSwitchCompletionStatus}
-          onActionButton={handleDeleteAllCompleted}
+          onActionButton={() => setShowModal(true)}
         />
       </div>
     </main>
