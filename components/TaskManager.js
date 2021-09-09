@@ -33,32 +33,25 @@ const TaskManager = () => {
       });
   }, []);
 
-  const handleSetCompleted = async (id) => {
-    let task = {};
-    const tasks = activeTasks.filter((tsk) => {
-      if (tsk._id === id) task = { ...tsk };
-      return tsk._id !== id;
-    });
+  const handleSwitchCompletionStatus = async (id, currentCompletedStatus) => {
+    const tasks = currentCompletedStatus ? completedTasks : activeTasks;
+
+    const filteredTasks = tasks.filter((tsk) => tsk._id !== id);
 
     try {
-      await taskAPI.patch(`/tasks/${id}`, { completed: true });
-      setCompletedTasks([...completedTasks, task]);
-      setActiveTasks(tasks);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+      const response = await taskAPI.patch(`/tasks/${id}`, {
+        completed: !currentCompletedStatus,
+      });
 
-  const handleUnSetCompleted = async (id) => {
-    let task = {};
-    const tasks = completedTasks.filter((tsk) => {
-      if (tsk._id === id) task = { ...tsk };
-      return tsk._id !== id;
-    });
-    try {
-      await taskAPI.patch(`/tasks/${id}`, { completed: false });
-      setCompletedTasks(tasks);
-      setActiveTasks([...activeTasks, task]);
+      const updatedTask = response.data.task;
+
+      if (currentCompletedStatus) {
+        setCompletedTasks(filteredTasks);
+        setActiveTasks([...activeTasks, updatedTask]);
+        return;
+      }
+      setCompletedTasks([...completedTasks, updatedTask]);
+      setActiveTasks(filteredTasks);
     } catch (error) {
       console.log(error);
     }
@@ -101,7 +94,7 @@ const TaskManager = () => {
           title="Active Tasks"
           actionTitle="Complete All"
           tasks={activeTasks}
-          onChangeStatus={handleSetCompleted}
+          onChangeStatus={handleSwitchCompletionStatus}
           onActionButton={handleCompleted}
         />
         <TaskList
@@ -109,7 +102,7 @@ const TaskManager = () => {
           actionTitle="Delete All"
           actionType="danger"
           tasks={completedTasks}
-          onChangeStatus={handleUnSetCompleted}
+          onChangeStatus={handleSwitchCompletionStatus}
           onActionButton={handleDeleteCompleted}
         />
       </div>
