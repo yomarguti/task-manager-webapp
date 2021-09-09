@@ -19,9 +19,11 @@ const TaskManager = () => {
     }
 
     taskAPI
-      .get("/tasks")
+      .get("/tasks?sortBy=createdAt:desc")
       .then((response) => {
-        setActiveTasks(response.data);
+        const tasks = response.data;
+        setActiveTasks(tasks.filter((tsk) => !tsk.completed));
+        setCompletedTasks(tasks.filter((tsk) => tsk.completed));
       })
       .catch((e) => {
         if (e.response.status === 401) {
