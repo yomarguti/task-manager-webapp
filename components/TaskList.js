@@ -28,6 +28,7 @@ const TaskList = ({
         })}
       </ul>
       <button
+        disabled={tasks.length === 0}
         onClick={onActionButton}
         className={`self-end btn ${classActionName}`}
       >
