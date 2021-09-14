@@ -1,17 +1,17 @@
-import { useRef } from "react";
+import { useState } from "react";
 
 import taskAPI from "../utils/TaskAPI";
 
 const NewTask = ({ addTask }) => {
-  const descriptionRef = useRef(null);
+  const [description, setDescription] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await taskAPI.post("/tasks", {
-        description: descriptionRef.current.value,
+        description,
       });
-      descriptionRef.current.value = "";
+      setDescription("");
       addTask(response.data.task);
     } catch (error) {
       console.log(error);
@@ -23,13 +23,19 @@ const NewTask = ({ addTask }) => {
       <h4 className="text-lg font-semibold">New Task</h4>
       <form className="flex flex-col pt-2" onSubmit={handleSubmit}>
         <input
-          ref={descriptionRef}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
           className="input-form"
           type="text"
           id="InputDescription"
           placeholder="Describe your Task"
         />
-        <button className="self-end btn btn-green">Create</button>
+        <button
+          disabled={description.length <= 2}
+          className="self-end btn btn-green"
+        >
+          Create
+        </button>
       </form>
     </div>
   );
