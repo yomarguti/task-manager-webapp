@@ -29,10 +29,11 @@ const TaskManager = () => {
         setCompletedTasks(tasks.filter((tsk) => tsk.completed));
       })
       .catch((e) => {
-        if (e.response.status === 401) {
+        if (e?.response?.status === 401) {
           localStorage.removeItem("token");
           router.push("/auth");
         }
+        console.error(e);
       });
   }, []);
 
