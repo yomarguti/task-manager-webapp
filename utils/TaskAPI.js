@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosApiInstance = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://salty-shore-19619.herokuapp.com",
   responseType: "json",
 });
 
