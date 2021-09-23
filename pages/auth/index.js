@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { StoreContext } from "../../utils/store";
 import { useRouter } from "next/router";
 
-import SignIn from "../../components/Singin";
+import SignIn from "../../components/SignIn";
 import SignUp from "../../components/Signup";
 
 import tasksAPI from "../../utils/TaskAPI";
