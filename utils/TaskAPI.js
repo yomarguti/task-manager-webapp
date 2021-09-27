@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosApiInstance = axios.create({
-  baseURL: "https://salty-shore-19619.herokuapp.com",
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
   responseType: "json",
 });
 
